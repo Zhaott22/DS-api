@@ -25,11 +25,11 @@ try:
     st.subheader("数据预览")
     st.dataframe(df)
     
-    # 检查是否存在"总计(W)"列
+    # 检查是否存在"总计"列
     if '总计' in df.columns:
         # 显示总计数量最多的15个公司
         st.subheader("总计TOP15公司")
-        top15 = df.nlargest(15, '总计(W)')
+        top15 = df.nlargest(15, '总计')
         
         # 创建两列布局
         col1, col2 = st.columns([3, 1])
@@ -48,7 +48,7 @@ try:
                 mime='text/csv'
             )
     else:
-        st.warning("数据中未找到'总计(W)'列，无法进行TOP15分析")
+        st.warning("数据中未找到'总计'列，无法进行TOP15分析")
         st.subheader("基本统计")
         st.write(df.describe())
     
