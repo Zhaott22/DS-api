@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import plotly
+import plotly.express as px
 
 # 设置页面
 st.title('部门数据分析')
@@ -35,7 +35,7 @@ if len(df.columns) >= 4:
         st.subheader("后五列数据趋势分析")
         
         # 使用Plotly Express绘制折线图
-        fig = plotly.line(
+        fig = px.line(
             sorted_df,
             x=sorted_df.index,  # 使用索引作为X轴
             y=last_five_columns,
