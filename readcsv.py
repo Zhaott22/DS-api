@@ -11,6 +11,7 @@ raw_url = github_url.replace("github.com", "raw.githubusercontent.com").replace(
 
 # 读取数据
 df = pd.read_csv(raw_url)
+st.dataframe(df)
 
 # 检查列名是否存在
 if len(df.columns) >= 4:
