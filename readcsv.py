@@ -16,8 +16,8 @@ st.dataframe(df)
 
 # 检查第三列是否存在（部门列）
     if len(df.columns) >= 3:
-        department_column = sorted_df.columns[2]  # 第三列作为部门列
-        department_counts = sorted_df[department_column].value_counts().reset_index()
+        department_column = df.columns[2]  # 第三列作为部门列
+        department_counts = df[department_column].value_counts().reset_index()
         department_counts.columns = ['部门', '数量']  # 重命名列名
 
         # 绘制部门数量柱状图
