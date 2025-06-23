@@ -44,7 +44,7 @@ if len(df.columns) >= 4:
                     row_data,
                     x='时间（周）',
                     y='数值',
-                    title=f"{row.iloc[0]} 的五周指标趋势",
+                    title=f"客户0{row.iloc[0]} 的五周指标趋势",
                     markers=True,
                     height=300
                 )
