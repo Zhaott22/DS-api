@@ -37,20 +37,20 @@ if len(df.columns) >= 4:
             with st.expander(f"{idx} - {row.iloc[0]} 的趋势图", expanded=False):
                 # 提取当前行的后五列数据
                 row_data = row[last_five_columns].reset_index()
-                row_data.columns = ['指标', '数值']
+                row_data.columns = ['时间（周）', '数值']
                 
                 # 使用Plotly绘制折线图
                 fig = px.line(
                     row_data,
-                    x='指标',
+                    x='时间（周）',
                     y='数值',
-                    title=f"{idx} - {row.iloc[0]} 的后五列指标趋势",
+                    title=f"{row.iloc[0]} 的五周指标趋势",
                     markers=True,
                     height=300
                 )
                 fig.update_traces(line=dict(width=3))
                 fig.update_layout(
-                    xaxis_title='指标',
+                    xaxis_title='时间（周）',
                     yaxis_title='数值',
                     hovermode='x unified'
                 )
