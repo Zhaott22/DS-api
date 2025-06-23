@@ -4,6 +4,7 @@ import plotly.express as px
 
 # 设置页面
 st.title('部门数据分析')
+st.write('总表')
 
 # GitHub文件URL处理
 github_url = "https://github.com/gitneoni/st001/blob/main/for%20Tiffany-st.csv"
