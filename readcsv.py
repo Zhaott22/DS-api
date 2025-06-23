@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd
+import plotly.express as px
 
 # 设置页面
-#st.set_page_config(layout="wide")
 st.title('部门数据分析')
 
 # GitHub文件URL处理
@@ -27,7 +27,36 @@ if len(df.columns) >= 4:
     st.dataframe(
         sorted_df.style.highlight_max(axis=0, subset=[target_column], color='lightgreen'),
         use_container_width=True
-    )
+    )# 检查后五列是否存在
+    if len(sorted_df.columns) >= 5:
+        last_five_columns = sorted_df.columns[-5:]  # 获取后五列列名
+        
+        # 创建折线图
+        st.subheader("后五列数据趋势分析")
+        
+        # 使用Plotly Express绘制折线图
+        fig = px.line(
+            sorted_df,
+            x=sorted_df.index,  # 使用索引作为X轴
+            y=last_five_columns,
+            title='后五列数据趋势',
+            labels={'value': '数值', 'variable': '指标', 'index': '排名'},
+            height=500
+        )
+        
+        # 更新布局增强可读性
+        fig.update_layout(
+            xaxis_title='数据排名',
+            yaxis_title='数值',
+            legend_title='指标',
+            hovermode='x unified'
+        )
+        
+        st.plotly_chart(fig, use_container_width=True)
+    else:
+        st.error("数据列数不足，无法绘制后五列趋势图。现有列名为：")
+        st.write(sorted_df.columns.tolist())
+    
 else:
     st.error("数据列数不足3列，无法排序。现有列名为：")
     st.write(df.columns.tolist())
