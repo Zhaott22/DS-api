@@ -34,7 +34,7 @@ if len(df.columns) >= 4:
         st.subheader("前15名数据的后五列趋势分析")
         
         for idx, row in sorted_df.iterrows():
-            with st.expander(f"第{rank}名 - 客户0{row.iloc[0]}的五周指标趋势", expanded=False):
+            with st.expander(f"第{rank}名 ", expanded=False):
                 # 提取当前行的后五列数据
                 row_data = row[last_five_columns].reset_index()
                 row_data.columns = ['时间（周）', '数值']
