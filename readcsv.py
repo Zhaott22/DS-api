@@ -16,8 +16,8 @@ df = pd.read_csv(raw_url)
 st.dataframe(df)
 
 # 检查列名是否存在（假设第三列名为「总计（W）」）
-if len(df.columns) >= 3:
-    target_column = df.columns[2]  # 获取第三列列名
+if len(df.columns) >= 4:
+    target_column = df.columns[3]  # 获取第三列列名
     st.write(f"当前按第三列 **{target_column}** 排序")
 
     # 按第三列降序排序并取前15行
