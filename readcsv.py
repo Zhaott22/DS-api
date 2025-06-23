@@ -15,7 +15,7 @@ df = pd.read_csv(raw_url)
 st.dataframe(df)
 
 # 检查第三列是否存在（部门列）
- if len(df.columns) >= 4:   
+ if len(df.columns) >= 3:   
         department_column = df.columns[2]  # 第三列作为部门列
         department_counts = df[department_column].value_counts().reset_index()
         department_counts.columns = ['部门', '数量']  # 重命名列名
