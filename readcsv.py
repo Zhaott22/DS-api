@@ -14,6 +14,32 @@ raw_url = github_url.replace("github.com", "raw.githubusercontent.com").replace(
 df = pd.read_csv(raw_url)
 st.dataframe(df)
 
+# 检查第三列是否存在（部门列）
+    if len(sorted_df.columns) >= 3:
+        department_column = sorted_df.columns[2]  # 第三列作为部门列
+        department_counts = sorted_df[department_column].value_counts().reset_index()
+        department_counts.columns = ['部门', '数量']  # 重命名列名
+
+        # 绘制部门数量柱状图
+        st.subheader("Top15中各部门数量统计")
+        fig = px.bar(
+            department_counts,
+            x='部门',
+            y='数量',
+            color='部门',  # 按部门自动分配颜色
+            title=f"Top15中各部门数量分布（按{department_column}统计）",
+            text='数量',  # 在柱子上显示数值
+            height=500
+        )
+        fig.update_layout(
+            xaxis_title='部门名称',
+            yaxis_title='出现次数',
+            hovermode='x',  # 悬停时显示完整信息
+            uniformtext_minsize=8,  # 文本最小字体
+            uniformtext_mode='hide'  # 文本重叠时隐藏
+        )
+        st.plotly_chart(fig, use_container_width=True)
+
 # 检查列名是否存在
 if len(df.columns) >= 4:
     target_column = df.columns[3]  # 获取第四列列名
