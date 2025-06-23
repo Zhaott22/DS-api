@@ -1,8 +1,5 @@
 import streamlit as st
 import pandas as pd
-import plotly.graph_objects as go
-import plotly.express as px
-import seaborn as sns
 
 # 设置页面
 #st.set_page_config(layout="wide")
