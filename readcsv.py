@@ -31,7 +31,7 @@ if len(df.columns) >= 4:
         last_five_columns = sorted_df.columns[-5:]  # 获取后五列列名
         
         # 创建15张折线图（每行对应一张图）
-        st.subheader("前15名数据的后五列趋势分析")
+        st.subheader("前15名的五周趋势分析")
         
         for idx, row in sorted_df.iterrows():
             with st.expander(f"客户0{row.iloc[0]} 的五周指标趋势 ", expanded=False):
